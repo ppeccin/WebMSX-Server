@@ -4,17 +4,17 @@ module.exports = {
     processGet: processGet
 };
 
-var request = require('request');
+const request = require('request');
 
 function processGet(req, res) {
 
-    var url = req.query.url;
-    var origin = (req.headers["Origin"] || req.headers["origin"]);
+    const url = req.query.url;
+    const origin = (req.headers["Origin"] || req.headers["origin"]);
 
     console.log(">>> Serving proxy download request: " + url + " from: " + origin);
 
     // Restrict use?
-    var cors = process.env.CORS_FROM;
+    const cors = process.env.CORS_FROM;
 
     // Error if not from allowed origins
     if (cors && (!origin || cors.indexOf(origin) < 0)) {
